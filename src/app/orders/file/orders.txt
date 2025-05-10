@@ -1,0 +1,10 @@
+1001,501,4248.90,john.doe@example.com
+1002,502,3898.99,jane.smith@example.com
+1003,503,1197.49,bob.miller@example.com
+1004,504,1598.00,susan.brown@example.com
+1005,505,5399.98,alice.jones@example.com
+1006,506,249.50,charlie.wilson@example.com
+1007,507,799.00,linda.davis@example.com
+1008,508,239.98,daniel.moore@example.com
+1009,509,899.00,nancy.taylor@example.com
+1010,510,149.50,michael.anderson@example.com

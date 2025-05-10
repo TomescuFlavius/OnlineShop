@@ -1,0 +1,10 @@
+1,Laptop Lenovo,2999.99,2024-01-10,15
+2,Mouse Logitech,149.50,2023-11-05,50
+3,Monitor Dell,899.00,2023-09-20,30
+4,Keyboard Razer,359.75,2024-02-17,25
+5,Smartphone Samsung,3799.90,2024-03-03,20
+6,Headphones Sony,799.00,2024-04-12,40
+7,Tablet Apple,4799.99,2024-05-01,10
+8,External HDD,299.99,2023-12-15,35
+9,USB Stick 64GB,59.99,2023-10-10,100
+10,Webcam Logitech,249.50,2024-01-25,45
