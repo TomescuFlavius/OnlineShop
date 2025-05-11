@@ -18,6 +18,7 @@ public class OrderService {
     public OrderService() {
         file = new File("C:\\mycode\\oop\\OnlineShop\\src\\app\\orders\\file\\orders.txt");
         orders = new ArrayList<Order>();
+        this.loadOrders();
 
     }
 
@@ -78,6 +79,19 @@ public class OrderService {
             System.out.println(order);
         }
     }
+
+    public List<Order> getOrderByUserId(int userId){
+        List<Order> filteredOrders=      new ArrayList<>();
+        for (Order order:orders){
+            if(order.getCustomerId()==userId){
+                filteredOrders.add(order);
+            }
+        }
+        return filteredOrders;
+    }
+
+
+
 
 
 

@@ -16,7 +16,8 @@ public class ProductService {
 
     public ProductService() {
         this.products = new ArrayList<Product>();
-        this.file = new File("C:\\mycode\\oop\\OnlineShop\\src\\app\\file\\products.txt");
+        this.file = new File("C:\\mycode\\oop\\OnlineShop\\src\\app\\products\\file\\products.txt");
+        this.loadProducts();
     }
 
     public void loadProducts() {
@@ -37,7 +38,7 @@ public class ProductService {
         try{
             FileWriter fileWriter = new FileWriter(file);
             PrintWriter printWriter = new PrintWriter(fileWriter);
-            printWriter.println(this.products);
+            printWriter.println(toSaveProducts());
             printWriter.close();
 
         } catch (Exception e) {
@@ -76,6 +77,16 @@ public class ProductService {
             randomId = random.nextInt(1000) + 1;
         }
         return randomId;
+    }
+
+    public Product getProductByName(String name){
+        for(Product product:products){
+            if (product.getName().equals(name))
+            {
+                return product;
+            }
+        }
+        return null;
     }
 
 

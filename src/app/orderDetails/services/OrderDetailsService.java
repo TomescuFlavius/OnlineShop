@@ -1,6 +1,7 @@
 package app.orderDetails.services;
 
 import app.orderDetails.models.OrderDetail;
+import app.orders.models.Order;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -16,6 +17,7 @@ public class OrderDetailsService {
     public OrderDetailsService() {
         this.orderDetailsFile=new File("C:\\mycode\\oop\\OnlineShop\\src\\app\\orderDetails\\file\\orderDetails.txt");
         this.orderDetails=new ArrayList<>();
+        this.loadOrderDetails();
     }
 
     public void loadOrderDetails() {
@@ -37,7 +39,7 @@ public class OrderDetailsService {
         try {
             FileWriter fileWriter=new FileWriter(orderDetailsFile);
             PrintWriter printWriter=new PrintWriter(fileWriter);
-            printWriter.println(orderDetails);
+            printWriter.println(toSaveorderDetails());
             printWriter.close();
         }catch (Exception e) {
             e.printStackTrace();
@@ -59,8 +61,28 @@ public class OrderDetailsService {
         }
     }
 
+    public List<OrderDetail> getOrderDetailsByOrderId(int orderId){
+        List<OrderDetail> filteredList = new ArrayList<>();
+        for(OrderDetail orderDetail1 :orderDetails){
+            if(orderDetail1.getOrderId()==orderId){
+                filteredList.add(orderDetail1);
+            }
+        }
+        return filteredList;
+
+    }
 
 
+    public List<OrderDetail> getOrderDetailsByProductId(int productId){
+        List<OrderDetail> filteredList = new ArrayList<>();
+        for(OrderDetail orderDetail1 :orderDetails){
+            if(orderDetail1.getProductId()==productId){
+                filteredList.add(orderDetail1);
+            }
+        }
+        return filteredList;
+
+    }
 
 
 }

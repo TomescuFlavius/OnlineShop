@@ -1,23 +1,23 @@
 package app.views;
 
-import app.costumers.models.Costumer;
-import app.costumers.services.CostumerService;
+import app.users.models.User;
+import app.users.services.UserService;
 
 import java.util.Scanner;
 
 public class ViewLogin {
     private Scanner scanner;
-    private CostumerService costumerService;
+    private UserService userService;
 
 
     public ViewLogin() {
         scanner=new Scanner(System.in);
-        costumerService= new CostumerService();
+        userService = new UserService();
         this.play1();
     }
     private void meniu(){
         System.out.println("Apasati tasta 1 pentru login");
-        System.out.println("Apasati tasta 1 pentru inregistrare");
+        System.out.println("Apasati tasta 2 pentru inregistrare");
     }
 
     public void play1(){
@@ -43,12 +43,12 @@ public class ViewLogin {
         System.out.println("Password:");
         String password= scanner.nextLine();
 
-        Costumer costumer= this.costumerService.getCostumerByNameAndPassword(name,password);
-        if(costumer==null){
+        User user = this.userService.getUserByNameAndPassword(name,password);
+        if(user ==null){
             System.out.println("Incorrect name/password");
         }
         else{
-            View view =new View(costumer);
+            View view =new View(user);
         }
     }
 
@@ -62,10 +62,10 @@ public class ViewLogin {
         System.out.println("billing adress:");
         String billingAdress=scanner.nextLine();
 
-        Costumer costumer=new Costumer(adress,password,name,billingAdress);
-        costumer.setId(costumerService.generateId());
-        costumerService.saveCostumers();
-        View view=new View(costumer);
+        User user =new User(adress,password,name,billingAdress);
+        user.setId(userService.generateId());
+        userService.saveUsers();
+        View view=new View(user);
 
     }
 

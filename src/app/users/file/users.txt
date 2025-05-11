@@ -1,0 +1,10 @@
+1,Str. Lalelelor 10,pass123,John Doe,Str. Trandafirilor 21
+2,Str. Libertății 5,secret456,Jane Smith,Str. Florilor 33
+3,Str. Mihai Viteazu 2,hello789,Bob Miller,Str. Crinului 12
+4,Str. Primăverii 15,admin321,Susan Brown,Str. Magnoliei 45
+5,Str. Tudor Vladimirescu 3,qwerty999,Alice Jones,Str. Zorilor 8
+6,Str. Plopilor 4,sunshine007,Charlie Wilson,Str. Teiului 18
+7,Str. Horea 7,luna321,Linda Davis,Str. Panselelor 27
+8,Str. Eroilor 11,stella444,Daniel Moore,Str. Castanilor 19
+9,Str. Nucului 20,passpass,Nancy Taylor,Str. Vișinului 10
+10,Str. Cireșilor 8,dragon555,Michael Anderson,Str. Alunișului 6

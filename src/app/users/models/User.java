@@ -1,13 +1,13 @@
-package app.costumers.models;
+package app.users.models;
 
-public class Costumer {
+public class User {
     private int id;
     private String address;
     private String password;
     private String name;
     private String billingAddress;
 
-    public Costumer(int id, String address, String password, String name, String billingAddress) {
+    public User(int id, String address, String password, String name, String billingAddress) {
         this.id = id;
         this.address = address;
         this.password = password;
@@ -15,7 +15,7 @@ public class Costumer {
         this.billingAddress = billingAddress;
     }
 
-    public Costumer(String address, String password, String name, String billingAddress)
+    public User(String address, String password, String name, String billingAddress)
     {
         this.address=address;
         this.password=password;
@@ -23,7 +23,7 @@ public class Costumer {
         this.billingAddress=billingAddress;
     }
 
-    public Costumer(String text){
+    public User(String text){
         text.split(",");
         this.id = Integer.parseInt(text.split(",")[0]);
         this.address = text.split(",")[1];
