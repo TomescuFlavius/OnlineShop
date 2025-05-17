@@ -49,7 +49,6 @@ public class Cart {
     }
 
     public void showCart(){
-        int total=totalCart();
         for (CartItem cartItem:cartItems){
             System.out.println(cartItem.descriere());
 
@@ -64,6 +63,15 @@ public class Cart {
 
         return total;
 
+    }
+
+    public void editCartItem(int cantity){
+        for (CartItem cartItem: cartItems){
+            if(cartItem!=null){
+                cartItem.setCantitate(cantity);
+                total+=cartItem.getProduct().getPrice()*cartItem.getCantitate();
+            }
+        }
     }
     public void deleteCartItemByName(String name){
         for (CartItem cartItem:cartItems){

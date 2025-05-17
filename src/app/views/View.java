@@ -44,6 +44,16 @@ public class View {
         System.out.println("5.Vizualizare cos");
         System.out.println("6.Editare cantitate produs");
         System.out.println("7.Eliminare produs");
+        System.out.println("8.Trimitere comanda");
+        System.out.println("9.Anulare comanda");
+        System.out.println("10.Editare comanda");
+
+        //actiuni pe comenzi
+        //trimitere comanda
+        //anulare comanda
+        //editare comanda
+        //statistica
+        //cel mai cumparat produs de el
     }
 
     public void play() {
@@ -81,9 +91,11 @@ public class View {
         }
     }
 
+
     public void showProducts() {
         this.productService.showProducts();
     }
+
 
     public void showOrders() {
         List<Order> orders = this.orderService.getOrderByUserId(user.getId());
@@ -91,6 +103,7 @@ public class View {
             System.out.println("id-ul comenzii:" + order.getId() + "cu suma:" + order.getAmount());
         }
     }
+
 
     public void showDetalis(){
         System.out.println("id-ul comenzii pentru detalii:");
@@ -102,6 +115,7 @@ public class View {
             System.out.println("Pretul per product:"+orderDetail.getPrice()+"\n"+ "Numar produse:" +orderDetail.getQuantity());
         }
     }
+
 
     public void showCart(){this.cart.showCart();}
 
@@ -125,13 +139,11 @@ public class View {
         System.out.println("Nume produs pe care vreti sa il modificati:");
         String name=scanner.nextLine();
         CartItem cartItem1= cart.getCartItemByProductName(name);
-        if(cartItem1!=null)
-        {
             System.out.println("Introduceti cantitatea:");
             int cantity=Integer.parseInt(scanner.nextLine());
-            cartItem1.setCantitate(cantity);
-        }
+            cart.editCartItem(cantity);
     }
+
 
     public void deleteCartItem(){
         showCart();
@@ -139,7 +151,6 @@ public class View {
         String name=scanner.nextLine();
         cart.deleteCartItemByName(name);
         System.out.println("Articolul a fost sters");
-
     }
 
 
