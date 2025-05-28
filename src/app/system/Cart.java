@@ -8,6 +8,7 @@ import java.util.List;
 public class Cart {
 
     private List<CartItem> cartItems;
+    private List<Cart> carts;
     private int total;
 
 
@@ -56,7 +57,7 @@ public class Cart {
         System.out.println("Total:" + totalCart());
     }
     public int totalCart(){
-        total=0;
+         total=0;
         for(CartItem cartItem:cartItems){
             total+=cartItem.getProduct().getPrice()*cartItem.getCantitate();
         }
@@ -80,4 +81,13 @@ public class Cart {
             }
         }
     }
+
+    public List<Cart> getCart(){
+        return carts;
+    }
+
+    public void emptyCart(){
+        this.cartItems.clear();
+    }
+
 }

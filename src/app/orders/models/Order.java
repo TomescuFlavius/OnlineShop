@@ -5,9 +5,16 @@ public class Order {
     private int customerId;
     private double amount;
     private String orderEmail;
+    private StatusOrder status;
 
-    public Order(int id, int customerId, double amount, String orderEmail) {
+    public Order(int id, int customerId, double amount, String orderEmail, StatusOrder status) {
         this.id = id;
+        this.customerId = customerId;
+        this.amount = amount;
+        this.orderEmail = orderEmail;
+        this.status = status;
+    }
+    public Order( int customerId, double amount, String orderEmail) {
         this.customerId = customerId;
         this.amount = amount;
         this.orderEmail = orderEmail;
@@ -19,6 +26,7 @@ public class Order {
         this.customerId = Integer.parseInt(text.split(",")[1]);
         this.amount = Double.parseDouble(text.split(",")[2]);
         this.orderEmail = text.split(",")[3];
+        this.status = StatusOrder.valueOf(text.split(",")[4]);//conversia de la enum la  string
     }
 
     public String descriere() {
@@ -27,6 +35,7 @@ public class Order {
         text+="customerId"+this.customerId+"\n";
         text+="amount"+this.amount+"\n";
         text+="orderEmail"+this.orderEmail+"\n";
+        text+="status" + this.status +"\n";
         return text;
     }
 
@@ -62,8 +71,16 @@ public class Order {
         this.orderEmail = orderEmail;
     }
 
+    public StatusOrder getStatus(){
+        return status;
+    }
+
+    public void setStatus(StatusOrder status){
+        this.status=status;
+    }
+
     public String toSaveOrder(){
-        return id+","+customerId+","+amount+","+orderEmail;
+        return id+","+customerId+","+amount+","+orderEmail+","+status;
     }
 
 }

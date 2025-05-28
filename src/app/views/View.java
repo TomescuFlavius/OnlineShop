@@ -2,6 +2,7 @@ package app.views;
 
 import app.orderDetails.models.OrderDetail;
 import app.orders.models.Order;
+import app.orders.models.StatusOrder;
 import app.users.models.User;
 import app.users.services.UserService;
 import app.orderDetails.services.OrderDetailsService;
@@ -84,6 +85,13 @@ public class View {
                 case 7:
                     this.deleteCartItem();
                     break;
+                case 8:
+                    this.sendOrder();
+                    break;
+                case 9:
+                    this.cancelOrder();
+                    break;
+
                 default:
                     System.out.println("invalid choice");
 
@@ -100,7 +108,7 @@ public class View {
     public void showOrders() {
         List<Order> orders = this.orderService.getOrderByUserId(user.getId());
         for (Order order : orders) {
-            System.out.println("id-ul comenzii:" + order.getId() + "cu suma:" + order.getAmount());
+            System.out.println("id-ul comenzii: " + " " + order.getId() + "cu suma:" + " "+ order.getAmount());
         }
     }
 
@@ -152,6 +160,52 @@ public class View {
         cart.deleteCartItemByName(name);
         System.out.println("Articolul a fost sters");
     }
+
+
+    public void sendOrder(){
+
+        Order order = new Order(user.getId(), cart.totalCart(), user.getName());
+        order.setStatus(StatusOrder.FINISHED);
+        this.orderService.addOrder(order);
+
+        List<CartItem> cartItems = this.cart.getCartItems();
+
+        for (CartItem cartItem : cartItems){
+            double totalPrice= cartItem.getCantitate()*cartItem.getProduct().getPrice();
+            OrderDetail orderDetail= new OrderDetail(order.getId(), cartItem.getProduct().getId(), totalPrice, cartItem.getCantitate());
+            orderDetailsService.addOrderDetail(orderDetail).descriere();
+        }
+
+        order.setAmount(this.cart.totalCart());
+        this.orderService.saveOrders();
+        this.orderDetailsService.saveOrderDetails();
+
+        cart.emptyCart();
+    }
+
+
+    public void cancelOrder(){
+        System.out.println("id-ul comenzii pe care vreti sa o anulati:");
+        int id=Integer.parseInt(scanner.nextLine());
+        Order order= orderService.getOrderById(id);
+        orderService.cancelOrder(order);
+        order.setStatus(StatusOrder.CANCELED);
+
+        OrderDetail orderDetail =orderDetailsService.getOrderDetailsById(id);
+        orderDetailsService.cancelOrderDetails(orderDetail);
+        this.orderService.saveOrders();
+        this.orderDetailsService.saveOrderDetails();
+    }
+
+    public void editOrder(){
+        System.out.println("id-ul comenzii pe care vreti sa o editati:");
+        int id=Integer.parseInt(scanner.nextLine());
+        Order order = orderService.getOrderById(id);
+        System.out.println(order.descriere());
+
+
+
+        }
 
 
 

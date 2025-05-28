@@ -14,6 +14,12 @@ public class OrderDetail {
         this.price = price;
         this.quantity = quantity;
     }
+    public OrderDetail( int orderId, int productId, double price, int quantity) {
+        this.orderId = orderId;
+        this.productId = productId;
+        this.price = price;
+        this.quantity = quantity;
+    }
 
     public OrderDetail(String text) {
         text.split(",");

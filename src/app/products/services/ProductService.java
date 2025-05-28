@@ -83,7 +83,7 @@ public class ProductService {
         for(Product product:products){
             if (product.getName().equals(name))
             {
-                return product;
+                return product  ;
             }
         }
         return null;

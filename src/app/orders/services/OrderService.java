@@ -41,7 +41,7 @@ public class OrderService {
         try {
             FileWriter fileWriter = new FileWriter(file);
             PrintWriter printWriter = new PrintWriter(fileWriter);
-            printWriter.println(orders);
+            printWriter.println(toSaveOrders());
             printWriter.close();
         }catch (Exception e) {
             e.printStackTrace();
@@ -51,10 +51,10 @@ public class OrderService {
     public String toSaveOrders(){
         String output="";
         int i;
-        for(i=0;i<orders.size();i++){
-            output += orders.get(i).toSaveOrder()+"\n";
+        for(i=0;i<orders.size()-1;i++){
+            output += this.orders.get(i).toSaveOrder()+"\n";
         }
-        return output+orders.get(i).toSaveOrder();
+        return output+this.orders.get(i).toSaveOrder();
     }
 
     public Order getOrderById(int id){
@@ -91,6 +91,15 @@ public class OrderService {
         return filteredOrders;
     }
 
+    public Order addOrder(Order order){
+        order.setId(generateId());
+        this.orders.add(order);
+        return order;
+    }
+
+    public void cancelOrder(Order order){
+        orders.remove(order);
+    }
 
 
 }

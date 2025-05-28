@@ -1,10 +1,10 @@
-1,1,4248.90,john.doe@example.com
-2,2,3898.99,jane.smith@example.com
-3,1,1197.49,bob.miller@example.com
-4,4,1598.00,susan.brown@example.com
-5,5,5399.98,alice.jones@example.com
-6,5,249.50,charlie.wilson@example.com
-7,7,799.00,linda.davis@example.com
-8,6,239.98,daniel.moore@example.com
-9,6,899.00,nancy.taylor@example.com
-10,6,149.50,michael.anderson@example.com
+2,2,3898.99,jane.smith@example.com,ONGOING
+4,4,1598.0,susan.brown@example.com,FINISHED
+5,5,5399.98,alice.jones@example.com,FINISHED
+6,5,249.5,charlie.wilson@example.com,FINISHED
+7,7,799.0,linda.davis@example.com,FINISHED
+8,6,239.98,daniel.moore@example.com,FINISHED
+9,6,899.0,nancy.taylor@example.com,FINISHED
+10,6,149.5,michael.anderson@example.com,ONGOING
+917,1,0.0,John Doe,FINISHED
+229,1,499.0,John Doe,FINISHED

@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class OrderDetailsService {
@@ -72,6 +73,25 @@ public class OrderDetailsService {
 
     }
 
+    public OrderDetail getOrderDetailsById(int id){
+        for(OrderDetail orderDetail1 :orderDetails){
+            if(orderDetail1.getId()==id){
+                return  orderDetail1;
+            }
+        }
+        return null;
+
+    }
+
+    private int generateId() {
+        Random random = new Random();
+        int randomId = random.nextInt(1000) + 1;
+        while (this.getOrderDetailsById(randomId) != null) {
+            randomId = random.nextInt(1000) + 1;
+        }
+        return randomId;
+    }
+
 
     public List<OrderDetail> getOrderDetailsByProductId(int productId){
         List<OrderDetail> filteredList = new ArrayList<>();
@@ -82,6 +102,17 @@ public class OrderDetailsService {
         }
         return filteredList;
 
+    }
+
+
+    public OrderDetail addOrderDetail(OrderDetail orderDetail){
+        orderDetail.setId(generateId());
+        orderDetails.add(orderDetail);
+        return orderDetail;
+    }
+
+    public void cancelOrderDetails(OrderDetail orderDetail){
+        orderDetails.remove(orderDetail);
     }
 
 
