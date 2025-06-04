@@ -91,6 +91,9 @@ public class View {
                 case 9:
                     this.cancelOrder();
                     break;
+                case 10:
+                    this.editOrder();
+                    break;
 
                 default:
                     System.out.println("invalid choice");
@@ -197,17 +200,31 @@ public class View {
         this.orderDetailsService.saveOrderDetails();
     }
 
-    public void editOrder(){
+    public void editOrder() {
         System.out.println("id-ul comenzii pe care vreti sa o editati:");
-        int id=Integer.parseInt(scanner.nextLine());
+        int id = Integer.parseInt(scanner.nextLine());
         Order order = orderService.getOrderById(id);
         System.out.println(order.descriere());
-
+        if (order.getStatus() == StatusOrder.CANCELED || order.getStatus() == StatusOrder.FINISHED) {
+            System.out.println("Comanda nu poate fi modificata");
+        } else if (order.getStatus() == StatusOrder.ONGOING) {
+            List<OrderDetail> orderDetails = this.orderDetailsService.getOrderDetailsByOrderId(id);
+            for (OrderDetail orderDetail : orderDetails) {
+                System.out.println(productService.getProductById(orderDetail.getProductId()).getName());
+                System.out.println("Pretul per product:" + orderDetail.getPrice() + "\n" + "Numar produse:" + orderDetail.getQuantity());
+                System.out.println("Introduceti id ul produsului:");
+                orderDetailsService.getOrderDetailsByProductId(id);
+                System.out.println("Introduceti noua cantitate:");
+                int quantity = Integer.parseInt(scanner.nextLine());
+                orderDetail.setQuantity(quantity);
+                order.setStatus(StatusOrder.ONGOING);
+                this.orderDetailsService.saveOrderDetails();
+                this.orderService.saveOrders();
+            }
 
 
         }
 
 
-
-
+    }
 }

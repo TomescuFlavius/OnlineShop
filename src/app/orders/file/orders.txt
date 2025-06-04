@@ -8,3 +8,4 @@
 10,6,149.5,michael.anderson@example.com,ONGOING
 917,1,0.0,John Doe,FINISHED
 229,1,499.0,John Doe,FINISHED
+952,1,748.0,John Doe,FINISHED
