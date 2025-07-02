@@ -16,7 +16,7 @@ public class OrderDetailsService {
     private List<OrderDetail> orderDetails;
 
     public OrderDetailsService() {
-        this.orderDetailsFile=new File("C:\\mycode\\oop\\OnlineShop\\src\\app\\orderDetails\\file\\orderDetails.txt");
+        this.orderDetailsFile=new File("C:\\mycode\\oop\\incapsulare\\OnlineShop\\src\\app\\orderDetails\\file\\orderDetails.txt");
         this.orderDetails=new ArrayList<>();
         this.loadOrderDetails();
     }
@@ -51,9 +51,9 @@ public class OrderDetailsService {
         String output="";
         int i;
         for(i=0;i<orderDetails.size()-1;i++) {
-            output=output+orderDetails.get(i).toSaveOrderDetail()+"\n";
+            output=output+orderDetails.get(i).toString()+"\n";
         }
-        return output+orderDetails.get(i).toSaveOrderDetail();
+        return output+orderDetails.get(i).toString();
     }
 
     public void showOrderDetails() {

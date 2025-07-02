@@ -27,11 +27,9 @@ public class CartItem {
      public void setCantitate(int cantitate) {
           this.cantitate = cantitate;
      }
-
-     public String descriere(){
-          String text="";
-          text+="cantitate:"+this.cantitate+"\n";
-          text+="product:" +this.product.getName()+"\n";
-          return text;
+@Override
+     public String toString(){
+          return "cantitate:"+this.cantitate+"\n"+"product:" +this.product.getName()+"\n";
      }
+
 }

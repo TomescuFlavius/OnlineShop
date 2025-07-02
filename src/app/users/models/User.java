@@ -6,41 +6,35 @@ public class User {
     private String password;
     private String name;
     private String billingAddress;
+    private UserTypes type;
 
-    public User(int id, String address, String password, String name, String billingAddress) {
+    public User(int id, String address, String password, String name, String billingAddress, UserTypes type) {
         this.id = id;
         this.address = address;
         this.password = password;
         this.name = name;
         this.billingAddress = billingAddress;
+        this.type=type;
     }
 
-    public User(String address, String password, String name, String billingAddress)
+    public User(String address, String password, String name, String billingAddress,UserTypes type)
     {
         this.address=address;
         this.password=password;
         this.name=name;
         this.billingAddress=billingAddress;
+        this.type=type;
     }
 
     public User(String text){
         text.split(",");
-        this.id = Integer.parseInt(text.split(",")[0]);
-        this.address = text.split(",")[1];
-        this.password = text.split(",")[2];
-        this.name = text.split(",")[3];
-        this.billingAddress = text.split(",")[4];
+        this.id = Integer.parseInt(text.split(",")[1]);
+        this.address = text.split(",")[2];
+        this.password = text.split(",")[3];
+        this.name = text.split(",")[4];
+        this.billingAddress = text.split(",")[5];
     }
 
-    public String descriere(){
-        String text="";
-        text+="id:"+this.id+"\n";
-        text+="address:"+this.address+"\n";
-        text+="password:"+this.password+"\n";
-        text+="name:"+this.name+"\n";
-        text+="billingAddress:"+this.billingAddress+"\n";
-        return text;
-    }
 
     public int getId() {
         return id;
@@ -82,7 +76,25 @@ public class User {
         this.billingAddress = billingAddress;
     }
 
-    public String toSaveCostumer(){
-        return id+","+address+","+password+","+name+","+billingAddress;
+
+
+    public UserTypes getType() {
+        return type;
+    }
+
+    public void setType(UserTypes type) {
+        this.type = type;
+    }
+    @Override
+    public boolean equals(Object o){
+        User user=(User) o;
+        return  user.getId()==((User) o).getId() &&
+                user.getAddress().equals(((User) o).getAddress())&&
+                user.getName().equals(((User) o).getName());
+    }
+
+    @Override
+    public String toString(){
+        return this.type+","+this.id+"," +this.address +","+this.password+","+this.name+","+this.billingAddress;
     }
 }

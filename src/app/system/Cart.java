@@ -51,7 +51,7 @@ public class Cart {
 
     public void showCart(){
         for (CartItem cartItem:cartItems){
-            System.out.println(cartItem.descriere());
+            System.out.println(cartItem.toString());
 
         }
         System.out.println("Total:" + totalCart());

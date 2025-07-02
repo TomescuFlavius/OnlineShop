@@ -1,5 +1,7 @@
 package app.products.models;
 
+import app.users.models.User;
+
 public class Product {
     private int id;
     private String name;
@@ -24,15 +26,6 @@ public class Product {
         stock = Integer.parseInt(text.split(",")[4]);
     }
 
-    public String descriere(){
-        String text="";
-        text+="id:"+this.id+"\n";
-        text+="name:"+this.name+"\n";
-        text+="price:"+this.price+"\n";
-        text+="create_date:"+this.create_date+"\n";
-        text+="stock:"+this.stock+"\n";
-        return text;
-    }
 
     public int getId() {
         return id;
@@ -74,8 +67,17 @@ public class Product {
         this.stock = stock;
     }
 
-    public String toSaveProduct(){
-        return id + "," + name + "," + price + "," + create_date + "," + stock;
+
+
+    @Override
+    public boolean equals(Object o){
+        Product product =(Product) o;
+        return  product.getId()==((Product) o).getId() &&
+                product.getName().equals(((Product) o).getName());
+    }
+    @Override
+    public String toString(){
+        return "id:"+this.id+"\n"+"name:"+this.name+"\n"+"price:"+this.price+"\n"+"create_date:"+this.create_date+"\n"+"stock:"+this.stock+"\n";
     }
 
 }

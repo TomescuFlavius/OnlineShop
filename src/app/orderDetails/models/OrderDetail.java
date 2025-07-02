@@ -1,5 +1,7 @@
 package app.orderDetails.models;
 
+import app.users.models.User;
+
 public class OrderDetail {
     private int id;
     private int orderId;
@@ -30,15 +32,8 @@ public class OrderDetail {
         this.quantity = Integer.parseInt(text.split(",")[4]);
     }
 
-    public String descriere(){
-        String text="";
-        text+="id:"+id+"\n";
-        text+="orderId:"+orderId+"\n";
-        text+="productId:"+productId+"\n";
-        text+="price:"+price+"\n";
-        text+="quantity:"+quantity+"\n";
-        return text;
-    }
+
+
 
     public int getId() {
         return id;
@@ -80,7 +75,18 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 
-    public String toSaveOrderDetail(){
-        return id+","+orderId+","+productId+","+price+","+quantity;
+
+    @Override
+    public boolean equals(Object o){
+        OrderDetail orderDetail = (OrderDetail) o;
+        return  orderDetail.getId()==((OrderDetail) o).getId() &&
+                orderDetail.getOrderId()==(((OrderDetail) o).getOrderId());
     }
+
+    public String toString(){
+        return "id:"+id+"\n"+"orderId:"+orderId+"\n"+"productId:"+productId+"\n"+"price:"+price+"\n"+"quantity:"+quantity+"\n";
+}
+
+
+
 }

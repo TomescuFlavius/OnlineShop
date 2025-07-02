@@ -17,7 +17,7 @@ public class OrderService {
     private List<Order> orders;
 
     public OrderService() {
-        file = new File("C:\\mycode\\oop\\OnlineShop\\src\\app\\orders\\file\\orders.txt");
+        file = new File("C:\\mycode\\oop\\incapsulare\\OnlineShop\\src\\app\\orders\\file\\orders.txt");
         orders = new ArrayList<Order>();
         this.loadOrders();
 
@@ -52,9 +52,9 @@ public class OrderService {
         String output="";
         int i;
         for(i=0;i<orders.size()-1;i++){
-            output += this.orders.get(i).toSaveOrder()+"\n";
+            output += this.orders.get(i).toString()+"\n";
         }
-        return output+this.orders.get(i).toSaveOrder();
+        return output+this.orders.get(i).toString();
     }
 
     public Order getOrderById(int id){

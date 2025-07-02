@@ -1,5 +1,7 @@
 package app.orders.models;
 
+import app.users.models.User;
+
 public class Order {
     private int id;
     private int customerId;
@@ -29,15 +31,6 @@ public class Order {
         this.status = StatusOrder.valueOf(text.split(",")[4]);//conversia de la enum la  string
     }
 
-    public String descriere() {
-        String text="";
-        text+="id"+this.id+"\n";
-        text+="customerId"+this.customerId+"\n";
-        text+="amount"+this.amount+"\n";
-        text+="orderEmail"+this.orderEmail+"\n";
-        text+="status" + this.status +"\n";
-        return text;
-    }
 
     public int getId() {
         return id;
@@ -79,8 +72,19 @@ public class Order {
         this.status=status;
     }
 
-    public String toSaveOrder(){
-        return id+","+customerId+","+amount+","+orderEmail+","+status;
+@Override
+    public String toString() {
+
+        return "id"+this.id+"\n"+"customerId"+this.customerId+"\n"+"amount"+this.amount+"\n"+"orderEmail"+this.orderEmail+"\n"+"status" + this.status +"\n";
     }
+    @Override
+    public boolean equals(Object o){
+        Order order=(Order) o;
+        return  order.getId()==((Order) o).getId() &&
+                order.getStatus().equals(((Order) o).getStatus());
+    }
+
+
+
 
 }

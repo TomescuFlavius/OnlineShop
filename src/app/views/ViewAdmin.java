@@ -14,7 +14,7 @@ import app.system.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class View {
+public class ViewAdmin extends View {
     private Scanner scanner;
     private UserService userService;
     private ProductService productService;
@@ -24,7 +24,8 @@ public class View {
     private Cart cart;
 
 
-    public View(User user1) {
+    public ViewAdmin(User user1) {
+        super(user1);
         scanner = new Scanner(System.in);
         userService = new UserService();
         productService = new ProductService();
@@ -39,16 +40,16 @@ public class View {
 
 
     private void meniu() {
-        System.out.println("1.Products");
-        System.out.println("2.Orders IDS");
-        System.out.println("3.Afisati detaliile comenzii");
-        System.out.println("4.Adaugare produs in cos");
-        System.out.println("5.Vizualizare cos");
-        System.out.println("6.Editare cantitate produs");
-        System.out.println("7.Eliminare produs");
-        System.out.println("8.Trimitere comanda");
-        System.out.println("9.Anulare comanda");
-        System.out.println("10.Editare comanda");
+            System.out.println("1.Products");
+            System.out.println("2.Orders IDS");
+            System.out.println("3.Afisati detaliile comenzii");
+            System.out.println("4.Adaugare produs in cos");
+            System.out.println("5.Vizualizare cos");
+            System.out.println("6.Editare cantitate produs");
+            System.out.println("7.Eliminare produs");
+            System.out.println("8.Trimitere comanda");
+            System.out.println("9.Anulare comanda");
+            System.out.println("10.Editare comanda");
     }
 
 
@@ -95,13 +96,12 @@ public class View {
             }
         }
     }
-
-
+@Override
     public void showProducts() {
         this.productService.showProducts();
     }
 
-
+@Override
     public void showOrders() {
         List<Order> orders = this.orderService.getOrderByUserId(user.getId());
         for (Order order : orders) {
@@ -109,7 +109,7 @@ public class View {
         }
     }
 
-
+@Override
     public void showDetalis(){
         System.out.println("id-ul comenzii pentru detalii:");
         int orderId =Integer.parseInt(scanner.nextLine());
@@ -121,10 +121,10 @@ public class View {
         }
     }
 
-
+@Override
     public void showCart(){this.cart.showCart();}
 
-
+@Override
     public void addInCart() {
 
         productService.showProducts();
@@ -138,18 +138,18 @@ public class View {
         }
     }
 
-
+@Override
     public void editCart(){
         showCart();
         System.out.println("Nume produs pe care vreti sa il modificati:");
         String name=scanner.nextLine();
         CartItem cartItem1= cart.getCartItemByProductName(name);
-        System.out.println("Introduceti cantitatea:");
-        int cantity=Integer.parseInt(scanner.nextLine());
-        cart.editCartItem(cantity);
+            System.out.println("Introduceti cantitatea:");
+            int cantity=Integer.parseInt(scanner.nextLine());
+            cart.editCartItem(cantity);
     }
 
-
+@Override
     public void deleteCartItem(){
         showCart();
         System.out.println("Nume produs pe care vreti sa il stergeti");
@@ -158,7 +158,7 @@ public class View {
         System.out.println("Articolul a fost sters");
     }
 
-
+@Override
     public void sendOrder(){
 
         Order order = new Order(user.getId(), cart.totalCart(), user.getName());
@@ -180,7 +180,7 @@ public class View {
         cart.emptyCart();
     }
 
-
+@Override
     public void cancelOrder(){
         System.out.println("id-ul comenzii pe care vreti sa o anulati:");
         int id=Integer.parseInt(scanner.nextLine());
@@ -194,6 +194,7 @@ public class View {
         this.orderDetailsService.saveOrderDetails();
     }
 
+@Override
     public void editOrder() {
         System.out.println("id-ul comenzii pe care vreti sa o editati:");
         int id = Integer.parseInt(scanner.nextLine());
@@ -222,4 +223,3 @@ public class View {
 
     }
 }
-

@@ -12,11 +12,12 @@ import java.util.Scanner;
 
 public class ProductService {
     private File file;
+
     private List<Product> products;
 
     public ProductService() {
         this.products = new ArrayList<Product>();
-        this.file = new File("C:\\mycode\\oop\\OnlineShop\\src\\app\\products\\file\\products.txt");
+        this.file = new File("C:\\mycode\\oop\\incapsulare\\OnlineShop\\src\\app\\products\\file\\products.txt");
         this.loadProducts();
     }
 
@@ -50,14 +51,14 @@ public class ProductService {
         String output = "";
         int i;
         for(i=0;i<this.products.size()-1;i++){
-            output+=this.products.get(i).toSaveProduct()+"\n";
+            output+=this.products.get(i).toString()+"\n";
         }
-        return output+this.products.get(i).toSaveProduct();
+        return output+this.products.get(i).toString();
     }
 
     public void showProducts(){
         for(Product product : products){
-            System.out.println(product.descriere());
+            System.out.println(product.toString());
         }
     }
 
