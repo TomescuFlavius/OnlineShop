@@ -24,5 +24,10 @@ public class Admin extends User{
         return super.toString()+","+ this.email;
     }
 
+    @Override
+    public UserTypes userTypes(){
+        return UserTypes.ADMIN;
+    }
+
 
 }

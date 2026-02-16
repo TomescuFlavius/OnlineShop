@@ -81,7 +81,12 @@ public class ViewLogin {
         UserTypes userType=UserTypes.valueOf(scanner.nextLine());
 
 
-        User user =new User(adress,password,name,billingAdress,userType);
+        User user= new User(adress,password,name,billingAdress,userType) {
+            @Override
+            public UserTypes userTypes() {
+                return null;
+            }
+        };
         user.setId(userService.generateId());
         userService.saveUsers();
         if(user.getType()==UserTypes.ADMIN){

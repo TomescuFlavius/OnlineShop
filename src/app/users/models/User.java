@@ -1,6 +1,6 @@
 package app.users.models;
 
-public class User {
+public abstract class User {
     private int id;
     private String address;
     private String password;
@@ -34,6 +34,8 @@ public class User {
         this.name = text.split(",")[4];
         this.billingAddress = text.split(",")[5];
     }
+
+
 
 
     public int getId() {
@@ -97,4 +99,6 @@ public class User {
     public String toString(){
         return this.type+","+this.id+"," +this.address +","+this.password+","+this.name+","+this.billingAddress;
     }
+
+    public abstract UserTypes userTypes();
 }

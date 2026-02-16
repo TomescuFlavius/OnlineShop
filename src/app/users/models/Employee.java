@@ -27,5 +27,10 @@ public class Employee extends User{
         return super.toString()+","+ this.badgeNumber;
     }
 
+    @Override
+    public UserTypes userTypes(){
+        return UserTypes.EMPLOYEE;
+    }
+
 
 }

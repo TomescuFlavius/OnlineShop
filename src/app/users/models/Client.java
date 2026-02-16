@@ -25,6 +25,11 @@ public class Client extends User{
         return super.toString()+","+this.phoneNumber;
     }
 
+    @Override
+    public UserTypes userTypes(){
+        return UserTypes.CLIENT;
+    }
+
 
 
 }

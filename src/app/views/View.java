@@ -14,7 +14,7 @@ import app.system.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class View {
+public abstract class View {
     private Scanner scanner;
     private UserService userService;
     private ProductService productService;
@@ -34,6 +34,7 @@ public class View {
         user = user1;
         this.play();
     }
+
 
 
 
